@@ -6,10 +6,12 @@ import facebook from "../images/g10.png";
 function Signup() {
   return (
     <div className="px-20 pt-20 pb-5 overflow-hidden">
-      <div className="flex gap-2">
-        <img src={logo} alt="logo" />
-        <p className="font-bold">HelpMeOut</p>
-      </div>
+      
+        <a href="/" className="flex gap-2">
+          <img src={logo} alt="logo" />
+          <p className="font-bold">HelpMeOut</p>
+        </a>
+      
       <div className="flex flex-col justify-center items-center pt-10">
         <div className="flex flex-col justify-center items-center">
           <h2 className="font-bold text-xl">Log in or Sign up</h2>

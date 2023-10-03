@@ -8,7 +8,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/record" element={<Record />} />
+        <Route path="/record/:videoId" element={<Record />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </div>

@@ -31,8 +31,8 @@ function Landingpage() {
           </p>
 
           <a
-            href="path/to/your-extension-file.zip"
-            download="HelpMeOut.zip"
+            href="https://drive.google.com/drive/folders/1NC6UdxUwrxj9hoN-H97ikOzLh7xQ7wtq?usp=sharing"
+           target="_blank"
             className="bg-[#120B48] text-white p-4 rounded-lg mt-6 hidden lg:block text-center text-decoration-none"
           >
             Install HelpMeOut &#8594;
@@ -50,7 +50,7 @@ function Landingpage() {
           </div>
           <div className="relative">
             <img src={third} alt="third" className="rounded-lg" />
-            <div className="absolute -top-14 -right-12 z-10">
+            <div className="absolute -top-14 -right-12 z-[2]">
               <img src={grid} alt="grid" />
             </div>
           </div>
@@ -86,7 +86,7 @@ function Landingpage() {
         </div>
       </div>
 
-      <div className="bg-white px-24 py-10 mb-8 hidden lg:block">
+      <div id="features" className="bg-white px-24 py-10 mb-8 hidden lg:block">
         <div className=" text-center py-10">
           <p className="font-bold text-xl">Features</p>
           <p className="text-sm pt-2">Key Highlights of Our Extension</p>
@@ -129,7 +129,7 @@ function Landingpage() {
           </div>
         </div>
       </div>
-      <div className="bg-white px-24 pb-14 hidden lg:block">
+      <div id="works" className="bg-white px-24 pb-14 hidden lg:block">
         <div className=" text-center py-10">
           <p className="font-bold text-xl">How it works</p>
         </div>

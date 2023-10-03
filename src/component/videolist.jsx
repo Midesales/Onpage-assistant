@@ -1,44 +1,46 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const VideoList = () => {
-  const [videos, setVideos] = useState([]);
-  const [error, setError] = useState(null);
+function VideoList() {
+  const { videoId } = useParams();
+  const [videoUrl, setVideoUrl] = useState("");
 
   useEffect(() => {
-    // Make the fetch request when the component mounts
-    fetch("http://frontedhng.onrender.com/videos")
+    // Fetch the video URL based on the videoId
+    fetch(`https://frontedhng.onrender.com/videos/${videoId}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then((data) => {
-        // Assuming the response data is an array of video objects
-        setVideos(data);
+      .then((response) => {
+        // Assuming the response data contains the video URL
+        setVideoUrl(response.url);
       })
       .catch((error) => {
-        setError(error);
+        console.error("Error fetching video:", error);
       });
-  }, []); // The empty array [] means this effect will run once, similar to componentDidMount
+  }, [videoId]);
 
   return (
     <div>
-      {error ? (
-        <p>Error: {error.message}</p>
+      {videoUrl ? (
+        <video controls width="640" height="480">
+          <source src={videoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       ) : (
-        <ul>
-          {videos.map((video) => (
-            <li key={video.id}>
-              <a href={video.url} target="_blank" rel="noopener noreferrer">
-                {video.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <p>Loading video...</p>
       )}
     </div>
   );
-};
+}
 
 export default VideoList;
+
+
+
+
+
+
