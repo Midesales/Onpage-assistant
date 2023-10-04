@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './header'
 import Footer from './footer'
 import Video from './video'
+import logo from '../images/iCON 7 1.png'
 
 function Record() {
   return (
