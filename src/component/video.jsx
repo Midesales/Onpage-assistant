@@ -64,26 +64,12 @@ function Video() {
         </div>
 
         <div className="border"></div>
-        <div className="flex flex-col gap-8">
           <div>
             
             <VideoList />
           </div>
-          <div>
-            <h3 className="font-bold pb-2">Transcript</h3>
-            <select
-              name="language"
-              id="lang"
-              className="w-44 text-[#7E7E7E] border-2  outline-none"
-            >
-              <option value="English">
-                English
-              </option>
-              <option value="French">French</option>
-              <option value="German">German</option>
-            </select>
-          </div>
-        </div>
+          
+        
       </div>
 
       {/* //MOBILE DEVICES */}
