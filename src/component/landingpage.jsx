@@ -31,8 +31,8 @@ function Landingpage() {
           </p>
 
           <a
-            href="https://drive.google.com/drive/folders/1NC6UdxUwrxj9hoN-H97ikOzLh7xQ7wtq?usp=sharing"
-           target="_blank"
+            href="https://drive.google.com/drive/folders/17Frnnf5cLAHyXHJsJ1LCwMzrnrF-dd3O?usp=drive_link"
+            target="_blank"
             className="bg-[#120B48] text-white p-4 rounded-lg mt-6 hidden lg:block text-center text-decoration-none"
           >
             Install HelpMeOut &#8594;
