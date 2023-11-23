@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect, useState, useRef} from "react";
+import { gsap } from "gsap";
 import first from "../images/first.png";
 import second from "../images/second.png";
 import third from "../images/third.png";
@@ -14,10 +15,49 @@ import record from '../images/record.png'
 import Header from "./header";
 import Footer from "./footer";
 import toggle from "../images/_Toggle base.png";
+import animated from "../images/animated.gif";
 
 function Landingpage() {
+
+ const [showTooltip, setShowTooltip] = useState(false);
+
+ useEffect(() => {
+   const movingImage = document.querySelector("#moving-image");
+   const offset = { x: 200, y: 450 };
+
+   const moveImage = (event) => {
+     // Get the mouse position
+     const mouseX = event.clientX;
+     const mouseY = event.clientY;
+
+     gsap.to(movingImage, {
+       duration: 0.2,
+       x: mouseX - offset.x,
+       y: mouseY - offset.y,
+       
+     });
+   };
+
+   const resetImage = () => {
+     gsap.to(movingImage, {
+       duration: 0.2,
+       x: 0, // Set the x position to 0
+       y: 0, // Set the y position to 0
+       
+     });
+   };
+
+   document.addEventListener("mousemove", moveImage);
+   document.addEventListener("mouseleave", resetImage);
+
+   return () => {
+     document.removeEventListener("mousemove", moveImage);
+     document.removeEventListener("mouseleave", resetImage);
+   };
+ }, []);
+
   return (
-    <section className="lg:bg-gray-200">
+    <section className="lg:bg-gray-200 relative">
       <Header />
       <div className="flex px-24 py-24 gap-24 bg-white mb-8">
         <div className="flex flex-col items-start justify-center">
@@ -33,9 +73,16 @@ function Landingpage() {
           <a
             href="https://drive.google.com/drive/folders/17Frnnf5cLAHyXHJsJ1LCwMzrnrF-dd3O?usp=drive_link"
             target="_blank"
-            className="bg-[#120B48] text-white p-4 rounded-lg mt-6 hidden lg:block text-center text-decoration-none"
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+            className="bg-[#120B48] text-white p-4 relative rounded-lg mt-6 hidden lg:block text-center text-decoration-none"
           >
-            Install HelpMeOut &#8594;
+            Install HelpMeOut &#8594;{" "}
+            {showTooltip && (
+              <div className="absolute z-10 bg-slate-200 text-[#120B48] right-0 -top-5 w-56 p-2  rounded-md m-5">
+                Click to install HelpMeOut
+              </div>
+            )}
           </a>
         </div>
 
@@ -43,14 +90,14 @@ function Landingpage() {
         <div className=" hidden lg:flex items-center justify-between gap-5">
           <div className="flex flex-col gap-5 relative">
             <img src={first} alt="first" className="rounded-lg" />
-            <img src={second} alt="second" className="rounded-lg" />
-            <div className="absolute -bottom-16 -left-12 z-10">
+            <img src={second} alt="second" className="rounded-lg z-10" />
+            <div className="absolute -bottom-16 -left-12">
               <img src={grid} alt="grid" />
             </div>
           </div>
           <div className="relative">
-            <img src={third} alt="third" className="rounded-lg" />
-            <div className="absolute -top-14 -right-12 z-[2]">
+            <img src={third} alt="third" className="rounded-lg z-10" />
+            <div className="absolute -top-16 -right-12">
               <img src={grid} alt="grid" />
             </div>
           </div>
@@ -164,6 +211,14 @@ function Landingpage() {
         </div>
       </div>
       <Footer />
+      <div className="hidden lg:block fixed bottom-0 left-0">
+        <img
+          id="moving-image"
+          src={animated}
+          alt="assistant"
+          className="opacity-[0.7] pointer-events-none"
+        />
+      </div>
     </section>
   );
 }

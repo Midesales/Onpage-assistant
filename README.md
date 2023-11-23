@@ -1,4 +1,4 @@
-This is the site for the chrome extension plugin, once the user install the extension, they will be able to record their screen and once they click on stop sharing, it will redirect them to ths site where they can see their videos
+An onpage assistant that shows the details of the button or link you want to click before you click on it
 
 
 
